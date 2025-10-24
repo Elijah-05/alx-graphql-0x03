@@ -4,10 +4,17 @@ import { EpisodeProps } from "@/interfaces"
 import EpisodeCard from "@/components/common/EpisodeCard"
 import { useEffect, useState } from "react"
 import ErrorProneComponent from "@/components/ErrorProneComponent"
+import ErrorBoundary from "@/components/ErrorBoundary"
 
 
 
 const Home: React.FC = () => {
+
+  return (
+      <ErrorBoundary>
+        <ErrorProneComponent />
+      </ErrorBoundary>
+  )
 
   const [page, setPage] = useState<number>(1)
   const { loading, error, data, refetch } = useQuery(GET_EPISODES, {
@@ -25,10 +32,6 @@ const Home: React.FC = () => {
 
   const results = data?.episodes.results
   const info = data?.episodes.info
-
-  return (
-    <ErrorProneComponent />
-  )
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#A3D5E0] to-[#F4F4F4] text-gray-800">
