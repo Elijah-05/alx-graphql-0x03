@@ -8,6 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <ErrorBoundary>
+        test
         <Component {...pageProps} />
       </ErrorBoundary>
     </ApolloProvider>
